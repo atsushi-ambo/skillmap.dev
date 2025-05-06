@@ -26,18 +26,110 @@
 
 ## 高可用性（HA）の基本
 
+### 単一障害点（SPoF）分析表
+
+| レイヤ | コンポーネント例 | 対策 |
+|--------|----------------|------|
+| ネットワーク | 単一ルーター | 冗長ルーターの導入 |
+| ロードバランサー | 単一ALB | マルチAZ構成 + オートスケーリング |
+| アプリケーション | 単一インスタンス | 複数インスタンス + オートスケーリング |
+| データベース | シングルAZ RDS | マルチAZ RDS + リードレプリカ |
+| ストレージ | 単一EBSボリューム | EFS/S3 + マルチAZレプリケーション |
+
 ### 高可用性を実現する3つの要素
 1. **冗長化**
    - 複数のサーバーで同じサービスを提供
    - データセンターのマルチAZ構成
+   - リージョンをまたがるディザスタリカバリ構成
 
 2. **フェイルオーバー**
    - 障害発生時に自動で予備システムに切り替え
    - ヘルスチェックによる自動検知
+   - RTO（目標復旧時間）とRPO（目標復旧時点）の設定
 
 3. **負荷分散**
    - リクエストを複数サーバーに分散
    - スティッキーセッションのサポート
+   - ヘルスチェックによる異常ノードの自動除外
+
+### Terraform によるマルチAZ構成の例
+
+```hcl
+# VPCとサブネットの定義
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+  enable_dns_support = true
+  enable_dns_hostnames = true
+}
+
+# パブリックサブネット（マルチAZ）
+resource "aws_subnet" "public" {
+  count             = 3
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index)
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+}
+
+# オートスケーリンググループ
+resource "aws_autoscaling_group" "web" {
+  vpc_zone_identifier = aws_subnet.public[*].id
+  min_size            = 3
+  max_size            = 10
+  desired_capacity    = 3
+  health_check_type   = "ELB"
+
+  launch_template {
+    id      = aws_launch_template.web.id
+    version = "$Latest"
+  }
+}
+```
+
+## 高可用性クイズ
+
+<details class="quiz">
+  <summary>クイズ: 高可用性とカオスエンジニアリング</summary>
+  <p>高可用性システムの設計において、正しい説明はどれですか？</p>
+  <ul class="quiz-options">
+    <li data-correct="false" data-explain="マルチAZ構成では、異なるデータセンターに配置されるため、1つのAZの障害が他に影響しません。">マルチAZ構成では、1つのAZの障害が他にも影響する</li>
+    <li data-correct="true" data-explain="RTOは目標復旧時間、RPOは目標復旧時点のことで、災害復旧計画の重要な指標です。">RTOとRPOは災害復旧計画の重要な指標である</li>
+    <li data-correct="false" data-explain="カオスエンジニアリングは本番環境でのみ実施する必要はなく、ステージング環境でも実施可能です。">カオスエンジニアリングは本番環境でのみ実施すべき</li>
+    <li data-correct="false" data-explain="オートスケーリングはスループットの向上だけでなく、コスト最適化のためにも使用されます。">オートスケーリングはスループット向上のみが目的</li>
+  </ul>
+</details>
+
+## カオスエンジニアリング
+
+### カオスエンジニアリングの基本
+
+```mermaid
+graph TD
+    A[仮説を立てる] --> B[実験を設計]
+    B --> C[本番環境で実行]
+    C --> D{システムは想定通りか?}
+    D -->|はい| E[耐性を確認]
+    D -->|いいえ| F[改善を実施]
+    E --> G[文書化]
+    F --> G
+    G --> A
+
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bbf,stroke:#333
+    style D fill:#f9f,stroke:#333
+    style E fill:#9f9,stroke:#333
+    style F fill:#f99,stroke:#333
+    style G fill:#ff9,stroke:#333
+```
+
+### カオスエンジニアリングの実践例
+
+| テスト | 目的 | 想定される影響 |
+|-------|------|--------------|
+| インスタンス停止 | 冗長性の検証 | 他ノードへの自動フェイルオーバー |
+| ネットワーク遅延 | レイテンシ耐性 | タイムアウト設定の検証 |
+| CPU負荷上昇 | オートスケーリング検証 | 自動スケールアウトの確認 |
+| AZ障害 | マルチAZ構成の検証 | 他AZへの自動フェイルオーバー |
 
 ## ロードバランサーの基本
 

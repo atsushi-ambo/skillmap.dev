@@ -7,16 +7,34 @@
     2. 効果的な監視戦略を設計できるようになる  
     3. ログ収集・分析のベストプラクティスを学ぶ
 
-## Cron と at コマンドの比較
+## ジョブスケジューリングの比較
 
-| 機能 | Cron | at |
-|------|------|----|
-| 実行タイミング | 定期的に繰り返し | 1回のみ |
-| 設定方法 | crontab -e で編集 | at コマンドで指定 |
-| 使用例 | 毎日のバックアップ | メンテナンス通知 |
-| 柔軟性 | 固定スケジュール | 1回限りの実行 |
+| 機能 | Cron | at | systemd-timer |
+|------|------|----|--------------|
+| 実行タイミング | 定期的に繰り返し | 1回のみ | 複雑なスケジュール可能 |
+| 設定方法 | crontab -e | at コマンド | .timer ユニットファイル |
+| ログ管理 | 個別設定が必要 | 個別設定が必要 | journaldと統合 |
+| 依存関係 | なし | なし | 他のユニットと連携可能 |
+| 使用例 | 定期的なバックアップ | メンテナンス通知 | 依存関係のあるタスク |
 
-Cronは定期的なタスク（バックアップ、ログローテーションなど）に最適で、atコマンドは1回限りの遅延実行に適しています。
+### 異常通知の設定例 (Cron)
+```bash
+0 2 * * * /path/to/backup.sh || curl -X POST -H 'Content-type: application/json' --data '{"text":"バックアップに失敗しました"}' $SLACK_WEBHOOK_URL
+```
+
+### systemd-timer の設定例
+```ini
+# backup.timer
+[Unit]
+Description=Run backup daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
 
 ## 監視の3つの視点
 
@@ -39,7 +57,28 @@ Cronは定期的なタスク（バックアップ、ログローテーション�
 - アクセスログの分析
 - セキュリティイベントの監視
 
-## Prometheus 監視アーキテクチャ
+## 監視フローの詳細
+
+### Prometheus メトリクス収集フロー
+
+```mermaid
+sequenceDiagram
+    participant App as アプリケーション
+    participant Exp as Exporter
+    participant Prom as Prometheus
+    participant Graf as Grafana
+    participant Alert as Alertmanager
+
+    App->>Exp: /metrics エンドポイント公開
+    Prom->>Exp: 15秒ごとにスクレイプ
+    Prom->>Prom: ルール評価
+    Prom->>Alert: アラート発行
+    Alert->>Slack: 通知送信
+    Prom->>Graf: メトリクス提供
+    Graf->>User: ダッシュボード表示
+```
+
+### 監視アーキテクチャ
 
 ```mermaid
 graph LR
