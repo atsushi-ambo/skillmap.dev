@@ -29,19 +29,28 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Create empty SARIF file if needed
+        run: |
+          mkdir -p sarif
+          echo '{"version":"2.1.0","runs":[]}' > sarif/gitleaks-report.sarif
+
       - name: GitLeaks Scan
-        uses: zricethezav/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v2
+        id: gitleaks
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          config-path: .gitleaks.toml
+          config: .gitleaks.toml
           report-format: sarif
-          report-path: gitleaks-report.sarif
+          report-path: sarif/gitleaks-report.sarif
           verbose: true
         continue-on-error: true
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: gitleaks-report.sarif
+          sarif_file: sarif/gitleaks-report.sarif
+          category: "gitleaks"
         if: always()
         continue-on-error: true
 
