@@ -1,0 +1,4 @@
+# シークレットファイルを言語統計から除外
+secrets/* linguist-generated
+*.key linguist-generated
+*.pem linguist-generated
