@@ -1,0 +1,17 @@
+# GitLeaks 設定ファイル
+title = "GitLeaks設定"
+
+# すべての検出をデフォルトで許可
+[allowlist]
+description = "許可するパターン"
+paths = [
+    '''.*tests.*''',
+    '''.*docs/.*''',
+    '''.*examples/.*'''
+]
+
+regexes = [
+    '''example''',
+    '''sample''',
+    '''test'''
+]
