@@ -1,0 +1,41 @@
+site_name: Skillmap.dev – Ops Essentials
+repo_url: https://github.com/atsushi-ambo/skillmap.dev
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: light blue
+  logo: img/icons/cloud.svg
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - content.code.annotate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - attr_list
+  - md_in_html
+  - pymdownx.snippets
+
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+        theme: default
+        themeVariables:
+          primaryColor: '#3f51b5'
+          primaryTextColor: '#fff'
+          primaryBorderColor: '#3f51b5'
+
+nav:
+  - Home: index.md
+  - Ops Essentials:
+      - Overview: ops-essentials/index.md
+      - Level 1 – Foundations: ops-essentials/level1.md
+      - Level 2 – Ops Routine: ops-essentials/level2.md
+      - Level 3 – Scale & HA: ops-essentials/level3.md
+      - Level 4 – Design & Cost: ops-essentials/level4.md
