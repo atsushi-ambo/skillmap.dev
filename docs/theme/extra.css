@@ -47,6 +47,37 @@ details.quiz summary:hover {
   line-height: 1.5;
 }
 
+/* Quiz explanation styles */
+.quiz-options li {
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+.quiz-options li .explanation {
+  display: block;
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: #475569;
+  border-right: 3px solid #e2e8f0;
+  animation: fadeIn 0.3s ease;
+}
+
+.quiz-options li.correct .explanation {
+  border-right-color: #10b981;
+}
+
+.quiz-options li.incorrect .explanation {
+  border-right-color: #ef4444;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .quiz-options li:hover {
   border-color: #93c5fd;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
