@@ -26,18 +26,29 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for Gitleaks to scan full history
 
       - name: Create empty report directory
         run: mkdir -p reports
 
       - name: Run gitleaks
         uses: gitleaks/gitleaks-action@v2
-        continue-on-error: true
+        continue-on-error: true # Important to allow report upload even if leaks are found
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Gitleaks uses this for API access if needed
+          GITLEAKS_REPORT_FORMAT: sarif # Ensure SARIF format for upload
+        with:
+          report_path: gitleaks-report.sarif # Define the report path
+
+      - name: Upload Gitleaks report to GitHub
+        if: always() # Ensures this step runs even if previous steps fail (e.g., gitleaks finds issues)
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: gitleaks-report.sarif
 
       - name: Display result message
         run: echo "Security scan completed successfully"
-
-  # 完全にCodeQLを削除
 
   build-docs:
     name: Build & Deploy Docs
