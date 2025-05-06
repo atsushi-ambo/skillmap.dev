@@ -1,12 +1,7 @@
 name: Deploy Documentation
 
+# main.ymlに統合したため、このワークフローは無効化しています
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
-      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 # Set the permissions for the GITHUB_TOKEN

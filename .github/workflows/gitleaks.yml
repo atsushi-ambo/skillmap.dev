@@ -1,19 +1,8 @@
 name: GitLeaks Secret Scan
 
-# 重複実行を防止するために特定のファイル変更のみに制限
+# main.ymlに統合したため、このワークフローは無効化しています
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - 'assets/**'
-  pull_request:
-    branches: [ main ]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - 'assets/**'
+  workflow_dispatch:
 
 # 同時実行を防止
 concurrency:

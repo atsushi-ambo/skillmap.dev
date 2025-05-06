@@ -1,26 +1,8 @@
 name: "CodeQL Analysis"
 
-# ワークフロー実行条件を整理して重複実行を防止
+# main.ymlに統合したため、このワークフローは無効化しています
 on:
-  # 特定のファイルが変更された場合のみ実行
-  push:
-    branches: [ main ]
-    paths:
-      - '**.py'
-      - '**.js'
-      - '**.html'
-      - '.github/workflows/codeql-analysis.yml'
-      - '.github/codeql/**'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - '**.py'
-      - '**.js'
-      - '**.html'
-      - '.github/workflows/codeql-analysis.yml'
-      - '.github/codeql/**'
-  schedule:
-    - cron: '30 1 * * 0' # 週に1回実行
+  workflow_dispatch:
 
 # 同時実行を制限
 concurrency:
