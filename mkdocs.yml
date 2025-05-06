@@ -19,14 +19,18 @@ theme:
     - extra.css
   extra_javascript:
     - quiz.js
+    - extra.js
 
 markdown_extensions:
   - admonition
   - pymdownx.superfences
   - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+      class: task-list
   - attr_list
   - md_in_html
-  - pymdownx.snippets
 
 plugins:
   - search

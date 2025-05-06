@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".quiz-options").forEach((list) => {
     list.querySelectorAll("li").forEach((li) => {
       li.addEventListener("click", (e) => {
+        const li = e.currentTarget; // Use the element that was actually clicked
         // Prevent multiple clicks
         if (li.classList.contains("clicked")) return;
         
