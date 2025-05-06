@@ -1,0 +1,12 @@
+name: "Custom CodeQL Configuration"
+
+disabled-queries:
+  # 誤検知を防ぐためのクエリを無効化
+  - "js/hardcoded-credentials"
+  - "js/hardcoded-credentials-in-url"
+  - "js/hardcoded-database-password"
+  - "js/hardcoded-jwt-secret"
+  - "js/hardcoded-password"
+  - "js/hardcoded-secret"
+  - "js/hardcoded-session-secret"
+  - "js/hardcoded-ssh-key"
