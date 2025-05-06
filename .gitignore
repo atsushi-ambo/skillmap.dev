@@ -10,6 +10,22 @@ package-lock.json
 
 # Environment variables
 .env
+.env.*
+!.env.example
+
+# Credentials & keys
+*.pem
+*.p12
+*.key
+*.crt
+*.der
+id_rsa
+id_rsa.pub
+
+# Terraform / Cloud state
+*.tfstate
+*.tfstate.backup
+.terraform/
 
 # IDE
 .vscode/
@@ -22,3 +38,17 @@ score.json
 *.swp
 *~
 .DS_Store
+
+# Local overrides
+local.*
+override.*
+
+# Build directories
+site/
+_build/
+.cache/
+
+# Local development
+.venv/
+venv/
+ENV/
