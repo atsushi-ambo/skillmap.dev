@@ -627,6 +627,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hands-on ラボ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1003,10 +1026,10 @@ docker<span class="w"> </span>ps
   <summary>クイズ: 監視の基本</summary>
   <p>システム監視において、リソース監視に含まれるのは？</p>
   <ul class="quiz-options">
-    <li data-correct="true">CPU使用率</li>
-    <li data-correct="true">メモリ使用量</li>
-    <li data-correct="false">HTTPステータスコード</li>
-    <li data-correct="true">ディスクI/O</li>
+    <li data-correct="true" data-explain="CPU使用率はシステムの処理能力を計測する重要なリソース監視項目です。ボトルネックの特定やキャパシティプランニングに役立ちます。">CPU使用率</li>
+    <li data-correct="true" data-explain="メモリ使用量はシステムのパフォーマンスに直結する重要なリソース指標で、メモリリークの検出にも役立ちます。">メモリ使用量</li>
+    <li data-correct="false" data-explain="HTTPステータスコードはアプリケーション監視の項目で、リソース監視には含まれません。">HTTPステータスコード</li>
+    <li data-correct="true" data-explain="ディスクI/Oはストレージのパフォーマンスを計測する重要なリソース監視項目です。">ディスクI/O</li>
   </ul>
 </details>
 
@@ -1014,10 +1037,10 @@ docker<span class="w"> </span>ps
   <summary>クイズ: ログ管理</summary>
   <p>ログ管理で重要な「3-2-1ルール」とは？</p>
   <ul class="quiz-options">
-    <li data-correct="false">3つのログレベル、2つの保存先、1つのバックアップ</li>
-    <li data-correct="true">3つのコピー、2つのメディア、1つはオフサイト</li>
-    <li data-correct="false">3時間ごとのログ取得、2時間の保持、1週間のアーカイブ</li>
-    <li data-correct="false">3つの監視項目、2つのアラート、1つのダッシュボード</li>
+    <li data-correct="false" data-explain="ログレベルの数や保存先の数は、3-2-1ルールとは関係ありません。">3つのログレベル、2つの保存先、1つのバックアップ</li>
+    <li data-correct="true" data-explain="3-2-1ルールとは、データ保護のベストプラクティスで、3つのコピーを2つの異なるメディアに保存し、そのうち1つはオフサイトに保管するというものです。これにより、災害時やシステム障害時のデータ損失リスクを最小限に抑えられます。">3つのコピー、2つのメディア、1つはオフサイト</li>
+    <li data-correct="false" data-explain="ログの取得間隔や保持期間は、3-2-1ルールとは異なる概念です。">3時間ごとのログ取得、2時間の保持、1週間のアーカイブ</li>
+    <li data-correct="false" data-explain="監視項目やアラートの数は、3-2-1ルールとは無関係です。">3つの監視項目、2つのアラート、1つのダッシュボード</li>
   </ul>
 </details>
 

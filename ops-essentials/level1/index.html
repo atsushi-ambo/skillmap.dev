@@ -504,20 +504,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-c-github" class="md-nav__link">
+  <a href="#1-c" class="md-nav__link">
     <span class="md-ellipsis">
-      1-C ケーススタディ: GitHubの初期アーキテクチャ
+      1-C ケーススタディ &amp; アーキテクチャ図
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-C ケーススタディ &amp; アーキテクチャ図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHubの初期アーキテクチャ
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-c" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      1-C アーキテクチャ図
+      アーキテクチャ図
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -549,7 +564,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       章末クイズ
     </span>
@@ -602,6 +617,29 @@
   
   <span class="md-ellipsis">
     Level 3 – Scale & HA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hands-on ラボ
     
   </span>
   
@@ -721,20 +759,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-c-github" class="md-nav__link">
+  <a href="#1-c" class="md-nav__link">
     <span class="md-ellipsis">
-      1-C ケーススタディ: GitHubの初期アーキテクチャ
+      1-C ケーススタディ &amp; アーキテクチャ図
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-C ケーススタディ &amp; アーキテクチャ図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHubの初期アーキテクチャ
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-c" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      1-C アーキテクチャ図
+      アーキテクチャ図
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -766,7 +819,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       章末クイズ
     </span>
@@ -909,7 +962,8 @@
 <li><strong>スケーラビリティ</strong>: ペタバイト級のデータを水平分散して保存可能で、トラフィック増加に応じて自動的にスケールします。</li>
 <li><strong>コスト効率</strong>: オンデマンド課金モデルで、使用した分だけのコストで済みます。</li>
 </ul>
-<h2 id="1-c-github">1-C ケーススタディ: GitHubの初期アーキテクチャ</h2>
+<h2 id="1-c">1-C ケーススタディ &amp; アーキテクチャ図</h2>
+<h3 id="github">GitHubの初期アーキテクチャ</h3>
 <p>GitHubの初期の2層アーキテクチャは、シンプルながらも堅牢な設計で知られています。</p>
 <p><strong>構成要素</strong>:
 - <strong>フロントエンド層</strong>: Nginx (ロードバランサー + 静的ファイル配信)
@@ -922,7 +976,7 @@
 - ステートレスな設計による水平スケーリング
 - キャッシュ戦略によるパフォーマンス最適化</p>
 <p><strong>学び</strong>: シンプルな設計から始め、必要に応じて複雑化していく進化的アーキテクチャの好例です。</p>
-<h2 id="1-c">1-C アーキテクチャ図</h2>
+<h3 id="_6">アーキテクチャ図</h3>
 <div class="highlight"><pre><span></span><code>graph TD
     subgraph クライアント
         A[ユーザー]
@@ -1047,7 +1101,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> 
 <li>[ ] メッセージキューの用途を理解している</li>
 <li>[ ] シンプルなDocker Composeファイルを作成できる</li>
 </ul>
-<h2 id="_6">章末クイズ</h2>
+<h2 id="_7">章末クイズ</h2>
 <details class="quiz">
   <summary>クイズ: データベースの基本</summary>
   <p>リレーショナルデータベースの特徴として正しいのは？</p>
