@@ -12,6 +12,13 @@ theme:
     - navigation.tabs
     - navigation.expand
     - content.code.annotate
+  
+  # Custom CSS and JS
+  custom_dir: docs/theme/
+  extra_css:
+    - extra.css
+  extra_javascript:
+    - quiz.js
 
 markdown_extensions:
   - admonition
