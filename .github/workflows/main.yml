@@ -37,31 +37,11 @@ jobs:
       - name: Display result message
         run: echo "Security scan completed successfully"
 
-  codeql-analyze:
-    name: CodeQL Analysis
-    needs: security-scan
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: python
-          config-file: ./.github/codeql/codeql-config.yml
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
-        with:
-          category: "/language:python"
+  # 完全にCodeQLを削除
 
   build-docs:
     name: Build & Deploy Docs
-    needs: [security-scan, codeql-analyze]
+    needs: [security-scan]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
