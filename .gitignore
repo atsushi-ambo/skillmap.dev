@@ -52,3 +52,6 @@ _build/
 .venv/
 venv/
 ENV/
+
+# Auto-push script
+auto-push.js

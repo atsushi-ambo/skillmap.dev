@@ -1,0 +1,27 @@
+{
+  "name": "skillmap.dev",
+  "version": "1.0.0",
+  "description": "## 概要",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node auto-push.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atsushi-ambo/skillmap.dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atsushi-ambo/skillmap.dev/issues"
+  },
+  "homepage": "https://github.com/atsushi-ambo/skillmap.dev#readme",
+  "devDependencies": {
+    "chokidar": "^4.0.3"
+  }
+}
