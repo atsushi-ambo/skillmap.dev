@@ -187,10 +187,10 @@ Netflixは、マイクロサービスアーキテクチャとクラウドネイ�
   <summary>クイズ: スケーリング戦略</summary>
   <p>スケールアウトのメリットとして正しいものは？</p>
   <ul class="quiz-options">
-    <li data-correct="true">耐障害性が向上する</li>
-    <li data-correct="false">サーバー1台あたりの処理能力が向上する</li>
-    <li data-correct="false">初期コストが安い</li>
-    <li data-correct="false">メンテナンスが簡単</li>
+    <li data-correct="true" data-explain="スケールアウトでは複数のサーバーで負荷を分散するため、1台が停止しても他がカバーでき、耐障害性が向上します。">耐障害性が向上する</li>
+    <li data-correct="false" data-explain="サーバー1台あたりの処理能力はスケールアップで向上します。スケールアウトは台数を増やすことで全体の処理能力を向上させます。">サーバー1台あたりの処理能力が向上する</li>
+    <li data-correct="false" data-explain="スケールアウトは複数のサーバーが必要なため、初期コストは高くなりがちです。">初期コストが安い</li>
+    <li data-correct="false" data-explain="複数のサーバーを管理する必要があるため、メンテナンスは相対的に複雑になります。">メンテナンスが簡単</li>
   </ul>
 </details>
 
@@ -198,19 +198,19 @@ Netflixは、マイクロサービスアーキテクチャとクラウドネイ�
   <summary>クイズ: ロードバランサー</summary>
   <p>L7ロードバランサーの特徴として正しいものは？</p>
   <ul class="quiz-options">
-    <li data-correct="true">HTTPヘッダーに基づいたルーティングが可能</li>
-    <li data-correct="false">TCPレベルでのみ動作する</li>
-    <li data-correct="false">SSL終端ができない</li>
-    <li data-correct="false">レイヤー4で動作する</li>
+    <li data-correct="true" data-explain="L7ロードバランサーはアプリケーション層（HTTP/HTTPS）で動作するため、HTTPヘッダーやURLパスに基づいた高度なルーティングが可能です。">HTTPヘッダーに基づいたルーティングが可能</li>
+    <li data-correct="false" data-explain="TCPレベルでのみ動作するのはL4ロードバランサーの特徴です。">TCPレベルでのみ動作する</li>
+    <li data-correct="false" data-explain="L7ロードバランサーはSSL/TLS終端が可能で、バックエンドサーバーの暗号化処理を軽減できます。">SSL終端ができない</li>
+    <li data-correct="false" data-explain="レイヤー4で動作するのはL4ロードバランサーで、L7はアプリケーション層（レイヤー7）で動作します。">レイヤー4で動作する</li>
   </ul>
 </details>
 <details class="quiz">
   <summary>クイズ: 高可用性</summary>
   <p>高可用性を実現するための要素でないものは？</p>
   <ul class="quiz-options">
-    <li data-correct="false">冗長化</li>
-    <li data-correct="false">フェイルオーバー</li>
-    <li data-correct="true">単一障害点の導入</li>
-    <li data-correct="false">ヘルスチェック</li>
+    <li data-correct="false" data-explain="冗長化は、システムの重要なコンポーネントを複数用意することで、1つが故障してもサービスを継続できるようにする重要な要素です。">冗長化</li>
+    <li data-correct="false" data-explain="フェイルオーバーは、障害発生時に自動的に予備システムに切り替える仕組みで、高可用性に不可欠です。">フェイルオーバー</li>
+    <li data-correct="true" data-explain="単一障害点の導入は、システムの信頼性を低下させる要因であり、高可用性を実現するための要素ではありません。むしろ排除すべきものです。">単一障害点の導入</li>
+    <li data-correct="false" data-explain="ヘルスチェックは、システムの健全性を監視し、異常を検知するために重要な要素です。">ヘルスチェック</li>
   </ul>
 </details>
