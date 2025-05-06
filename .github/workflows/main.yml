@@ -34,7 +34,8 @@ jobs:
         continue-on-error: true # Allow workflow to continue even if leaks are found
         with:
           config-path: "" # Use default config
-          args: --report-format sarif --report-path gitleaks-report.sarif
+          report-format: sarif
+          report-path: gitleaks-report.sarif
 
       - name: Upload Gitleaks report to GitHub
         if: ${{ always() && hashFiles('gitleaks-report.sarif') != '' }}
