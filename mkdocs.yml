@@ -28,7 +28,6 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
-      class: task-list
   - attr_list
   - md_in_html
 

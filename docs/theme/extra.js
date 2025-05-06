@@ -5,7 +5,7 @@
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
 
   // Mark saved states
-  document.querySelectorAll("ul.task-list input[type=checkbox]").forEach((cb, i) => {
+  document.querySelectorAll("ul.task-list-item input[type=checkbox]").forEach((cb, i) => {
     cb.checked = saved[i] ?? cb.checked;
     cb.addEventListener("change", () => {
       saved[i] = cb.checked;
