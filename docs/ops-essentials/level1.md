@@ -186,16 +186,15 @@ graph TD
 
 GitHubは2008年のローンチ当初、2層構成のシンプルなアーキテクチャを採用していました。Nginxをフロントエンドに配置し、Ruby on RailsアプリケーションとMySQLデータベースで構成されていました。この構成は、初期の段階では十分なパフォーマンスを発揮しましたが、ユーザー数の増加に伴い、データベースのスケーリングが課題となりました。この経験から、GitHubは段階的にアーキテクチャを改善し、現在のマイクロサービスアーキテクチャへと発展させました。
 
-<details class="quiz">
-  <summary>クイズ: サーバーレスアーキテクチャ</summary>
-  <p>サーバーレスアーキテクチャの特徴として正しいのは？</p>
-  <ul class="quiz-options">
-    <li data-correct="false" data-explain="サーバーレスでもサーバーは存在しますが、管理が不要になるという点が異なります。">物理サーバーが全く不要</li>
-    <li data-correct="true" data-explain="サーバーレスでは、使用した分だけのリソースに対して課金されるため、コスト効率が良い場合が多いです。">使用量に応じた課金モデル</li>
-    <li data-correct="false" data-explain="サーバーレスはステートフルな処理よりも、ステートレスな処理に適しています。">ステートフルな処理に最適</li>
-    <li data-correct="false" data-explain="サーバーレスでも、コールドスタートによるレイテンシが発生する可能性があります。">常に低レイテンシが保証される</li>
-  </ul>
-</details>
+???+ quiz "クイズ: サーバーレスアーキテクチャ"
+    サーバーレスアーキテクチャの特徴として正しいのは？
+    
+    <ul class="quiz-options">
+      <li data-correct="false" data-explain="サーバーレスでもサーバーは存在しますが、管理が不要になるという点が異なります。">物理サーバーが全く不要</li>
+      <li data-correct="true" data-explain="サーバーレスでは、使用した分だけのリソースに対して課金されるため、コスト効率が良い場合が多いです。">使用量に応じた課金モデル</li>
+      <li data-correct="false" data-explain="サーバーレスはステートフルな処理よりも、ステートレスな処理に適しています。">ステートフルな処理に最適</li>
+      <li data-correct="false" data-explain="サーバーレスでも、コールドスタートによるレイテンシが発生する可能性があります。">常に低レイテンシが保証される</li>
+    </ul>
 
 ## 1-F まとめチェックリスト
 
@@ -207,37 +206,34 @@ GitHubは2008年のローンチ当初、2層構成のシンプルなアーキテ
 
 ## 章末クイズ
 
-<details class="quiz">
-  <summary>クイズ: データベースの基本</summary>
-  <p>リレーショナルデータベースの特徴として正しいのは？</p>
-  <ul class="quiz-options">
-    <li data-correct="false" data-explain="スキーマレスはNoSQLデータベースの特徴です。リレーショナルデータベースは構造化されたスキーマを定義します。">スキーマレスで柔軟なデータ構造</li>
-    <li data-correct="true" data-explain="リレーショナルデータベースはACID特性を備え、トランザクション処理に優れています。">トランザクション処理に優れている</li>
-    <li data-correct="false" data-explain="非構造化データの処理はNoSQLデータベースの得意分野です。">大量の非構造化データに適している</li>
-    <li data-correct="false" data-explain="リレーショナルデータベースは垂直スケーリングが主で、水平スケーリングは苦手とします。">水平スケーリングが得意</li>
-  </ul>
-</details>
+???+ quiz "クイズ: データベースの基本"
+    リレーショナルデータベースの特徴として正しいのは？
+    
+    <ul class="quiz-options">
+      <li data-correct="false" data-explain="スキーマレスはNoSQLデータベースの特徴です。リレーショナルデータベースは構造化されたスキーマを定義します。">スキーマレスで柔軟なデータ構造</li>
+      <li data-correct="true" data-explain="リレーショナルデータベースはACID特性を備え、トランザクション処理に優れています。">トランザクション処理に優れている</li>
+      <li data-correct="false" data-explain="非構造化データの処理はNoSQLデータベースの得意分野です。">大量の非構造化データに適している</li>
+      <li data-correct="false" data-explain="リレーショナルデータベースは垂直スケーリングが主で、水平スケーリングは苦手とします。">水平スケーリングが得意</li>
+    </ul>
 
-<details class="quiz">
-  <summary>クイズ: ロードバランサー</summary>
-  <p>ロードバランサーの主な役割は？</p>
-  <ul class="quiz-options">
-    <li data-correct="true" data-explain="ロードバランサーの主な役割は、複数のサーバーにリクエストを分散し、負荷を均一に保つことです。これにより、単一障害点を防ぎ、スケーラビリティを向上させます。">トラフィックの分散</li>
-    <li data-correct="false" data-explain="データの暗号化はTLS/SSLの役割で、ロードバランサーは暗号化を終端させることはできますが、主な役割ではありません。">データの暗号化</li>
-    <li data-correct="false" data-explain="コンテンツのキャッシュはCDNやリバースプロキシの役割で、ロードバランサーの主な機能ではありません。">コンテンツのキャッシュ</li>
-    <li data-correct="false" data-explain="ドメイン名の解決はDNSサーバーの役割です。">ドメイン名の解決</li>
-  </ul>
-</details>
+???+ quiz "クイズ: ロードバランサー"
+    ロードバランサーの主な役割は？
+    
+    <ul class="quiz-options">
+      <li data-correct="true" data-explain="ロードバランサーの主な役割は、複数のサーバーにリクエストを分散し、負荷を均一に保つことです。これにより、単一障害点を防ぎ、スケーラビリティを向上させます。">トラフィックの分散</li>
+      <li data-correct="false" data-explain="データの暗号化はTLS/SSLの役割で、ロードバランサーは暗号化を終端させることはできますが、主な役割ではありません。">データの暗号化</li>
+      <li data-correct="false" data-explain="コンテンツのキャッシュはCDNやリバースプロキシの役割で、ロードバランサーの主な機能ではありません。">コンテンツのキャッシュ</li>
+      <li data-correct="false" data-explain="ドメイン名の解決はDNSサーバーの役割です。">ドメイン名の解決</li>
+    </ul>
 
-<details class="quiz">
-  <summary>クイズ: CDNの利点</summary>
-  <p>CDNの主な利点は？</p>
-  <ul class="quiz-options">
-    <li data-correct="false" data-explain="CDNは静的コンテンツの配信が目的で、データベースのバックアップ機能はありません。">データベースのバックアップ</li>
-    <li data-correct="false" data-explain="アプリケーションの実行はCDNの役割ではありません。CDNは静的コンテンツの配信に特化しています。">アプリケーションの実行</li>
-    <li data-correct="true" data-explain="CDNは世界中に分散したエッジサーバーでコンテンツをキャッシュし、ユーザーに近い場所から配信することで高速化を実現します。">コンテンツ配信の高速化</li>
-    <li data-correct="false" data-explain="ユーザー認証はアプリケーションサーバーやIDプロバイダーの役割で、CDNの機能ではありません。">ユーザー認証</li>
-  </ul>
-</details>
+???+ quiz "クイズ: CDNの利点"
+    CDNの主な利点は？
+    
+    <ul class="quiz-options">
+      <li data-correct="false" data-explain="CDNは静的コンテンツの配信が目的で、データベースのバックアップ機能はありません。">データベースのバックアップ</li>
+      <li data-correct="false" data-explain="アプリケーションの実行はCDNの役割ではありません。CDNは静的コンテンツの配信に特化しています。">アプリケーションの実行</li>
+      <li data-correct="true" data-explain="CDNは世界中に分散したエッジサーバーでコンテンツをキャッシュし、ユーザーに近い場所から配信することで高速化を実現します。">コンテンツ配信の高速化</li>
+      <li data-correct="false" data-explain="ユーザー認証はアプリケーションサーバーやIDプロバイダーの役割で、CDNの機能ではありません。">ユーザー認証</li>
+    </ul>
 
 [次のレベルへ →](../ops-essentials/level2.md){ .md-button }
