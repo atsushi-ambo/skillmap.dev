@@ -1082,17 +1082,15 @@ docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> 
 </div>
 <h2 id="1-e-github">1-E ケーススタディ: GitHubの初期構成</h2>
 <p>GitHubは2008年のローンチ当初、2層構成のシンプルなアーキテクチャを採用していました。Nginxをフロントエンドに配置し、Ruby on RailsアプリケーションとMySQLデータベースで構成されていました。この構成は、初期の段階では十分なパフォーマンスを発揮しましたが、ユーザー数の増加に伴い、データベースのスケーリングが課題となりました。この経験から、GitHubは段階的にアーキテクチャを改善し、現在のマイクロサービスアーキテクチャへと発展させました。</p>
-<details class="quiz">
-  <summary>クイズ: サーバーレスアーキテクチャ</summary>
-  <p>サーバーレスアーキテクチャの特徴として正しいのは？</p>
-  <ul class="quiz-options">
-    <li data-correct="false" data-explain="サーバーレスでもサーバーは存在しますが、管理が不要になるという点が異なります。">物理サーバーが全く不要</li>
-    <li data-correct="true" data-explain="サーバーレスでは、使用した分だけのリソースに対して課金されるため、コスト効率が良い場合が多いです。">使用量に応じた課金モデル</li>
-    <li data-correct="false" data-explain="サーバーレスはステートフルな処理よりも、ステートレスな処理に適しています。">ステートフルな処理に最適</li>
-    <li data-correct="false" data-explain="サーバーレスでも、コールドスタートによるレイテンシが発生する可能性があります。">常に低レイテンシが保証される</li>
-  </ul>
-</details>
-
+<p>???+ quiz "クイズ: サーバーレスアーキテクチャ"
+    サーバーレスアーキテクチャの特徴として正しいのは？</p>
+<pre><code>&lt;ul class="quiz-options"&gt;
+  &lt;li data-correct="false" data-explain="サーバーレスでもサーバーは存在しますが、管理が不要になるという点が異なります。"&gt;物理サーバーが全く不要&lt;/li&gt;
+  &lt;li data-correct="true" data-explain="サーバーレスでは、使用した分だけのリソースに対して課金されるため、コスト効率が良い場合が多いです。"&gt;使用量に応じた課金モデル&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="サーバーレスはステートフルな処理よりも、ステートレスな処理に適しています。"&gt;ステートフルな処理に最適&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="サーバーレスでも、コールドスタートによるレイテンシが発生する可能性があります。"&gt;常に低レイテンシが保証される&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
 <h2 id="1-f">1-F まとめチェックリスト</h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> インフラの主要コンポーネントとその役割を説明できる</li>
@@ -1102,39 +1100,33 @@ docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> 
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> シンプルなDocker Composeファイルを作成できる</li>
 </ul>
 <h2 id="_7">章末クイズ</h2>
-<details class="quiz">
-  <summary>クイズ: データベースの基本</summary>
-  <p>リレーショナルデータベースの特徴として正しいのは？</p>
-  <ul class="quiz-options">
-    <li data-correct="false" data-explain="スキーマレスはNoSQLデータベースの特徴です。リレーショナルデータベースは構造化されたスキーマを定義します。">スキーマレスで柔軟なデータ構造</li>
-    <li data-correct="true" data-explain="リレーショナルデータベースはACID特性を備え、トランザクション処理に優れています。">トランザクション処理に優れている</li>
-    <li data-correct="false" data-explain="非構造化データの処理はNoSQLデータベースの得意分野です。">大量の非構造化データに適している</li>
-    <li data-correct="false" data-explain="リレーショナルデータベースは垂直スケーリングが主で、水平スケーリングは苦手とします。">水平スケーリングが得意</li>
-  </ul>
-</details>
-
-<details class="quiz">
-  <summary>クイズ: ロードバランサー</summary>
-  <p>ロードバランサーの主な役割は？</p>
-  <ul class="quiz-options">
-    <li data-correct="true" data-explain="ロードバランサーの主な役割は、複数のサーバーにリクエストを分散し、負荷を均一に保つことです。これにより、単一障害点を防ぎ、スケーラビリティを向上させます。">トラフィックの分散</li>
-    <li data-correct="false" data-explain="データの暗号化はTLS/SSLの役割で、ロードバランサーは暗号化を終端させることはできますが、主な役割ではありません。">データの暗号化</li>
-    <li data-correct="false" data-explain="コンテンツのキャッシュはCDNやリバースプロキシの役割で、ロードバランサーの主な機能ではありません。">コンテンツのキャッシュ</li>
-    <li data-correct="false" data-explain="ドメイン名の解決はDNSサーバーの役割です。">ドメイン名の解決</li>
-  </ul>
-</details>
-
-<details class="quiz">
-  <summary>クイズ: CDNの利点</summary>
-  <p>CDNの主な利点は？</p>
-  <ul class="quiz-options">
-    <li data-correct="false" data-explain="CDNは静的コンテンツの配信が目的で、データベースのバックアップ機能はありません。">データベースのバックアップ</li>
-    <li data-correct="false" data-explain="アプリケーションの実行はCDNの役割ではありません。CDNは静的コンテンツの配信に特化しています。">アプリケーションの実行</li>
-    <li data-correct="true" data-explain="CDNは世界中に分散したエッジサーバーでコンテンツをキャッシュし、ユーザーに近い場所から配信することで高速化を実現します。">コンテンツ配信の高速化</li>
-    <li data-correct="false" data-explain="ユーザー認証はアプリケーションサーバーやIDプロバイダーの役割で、CDNの機能ではありません。">ユーザー認証</li>
-  </ul>
-</details>
-
+<p>???+ quiz "クイズ: データベースの基本"
+    リレーショナルデータベースの特徴として正しいのは？</p>
+<pre><code>&lt;ul class="quiz-options"&gt;
+  &lt;li data-correct="false" data-explain="スキーマレスはNoSQLデータベースの特徴です。リレーショナルデータベースは構造化されたスキーマを定義します。"&gt;スキーマレスで柔軟なデータ構造&lt;/li&gt;
+  &lt;li data-correct="true" data-explain="リレーショナルデータベースはACID特性を備え、トランザクション処理に優れています。"&gt;トランザクション処理に優れている&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="非構造化データの処理はNoSQLデータベースの得意分野です。"&gt;大量の非構造化データに適している&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="リレーショナルデータベースは垂直スケーリングが主で、水平スケーリングは苦手とします。"&gt;水平スケーリングが得意&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>???+ quiz "クイズ: ロードバランサー"
+    ロードバランサーの主な役割は？</p>
+<pre><code>&lt;ul class="quiz-options"&gt;
+  &lt;li data-correct="true" data-explain="ロードバランサーの主な役割は、複数のサーバーにリクエストを分散し、負荷を均一に保つことです。これにより、単一障害点を防ぎ、スケーラビリティを向上させます。"&gt;トラフィックの分散&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="データの暗号化はTLS/SSLの役割で、ロードバランサーは暗号化を終端させることはできますが、主な役割ではありません。"&gt;データの暗号化&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="コンテンツのキャッシュはCDNやリバースプロキシの役割で、ロードバランサーの主な機能ではありません。"&gt;コンテンツのキャッシュ&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="ドメイン名の解決はDNSサーバーの役割です。"&gt;ドメイン名の解決&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>???+ quiz "クイズ: CDNの利点"
+    CDNの主な利点は？</p>
+<pre><code>&lt;ul class="quiz-options"&gt;
+  &lt;li data-correct="false" data-explain="CDNは静的コンテンツの配信が目的で、データベースのバックアップ機能はありません。"&gt;データベースのバックアップ&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="アプリケーションの実行はCDNの役割ではありません。CDNは静的コンテンツの配信に特化しています。"&gt;アプリケーションの実行&lt;/li&gt;
+  &lt;li data-correct="true" data-explain="CDNは世界中に分散したエッジサーバーでコンテンツをキャッシュし、ユーザーに近い場所から配信することで高速化を実現します。"&gt;コンテンツ配信の高速化&lt;/li&gt;
+  &lt;li data-correct="false" data-explain="ユーザー認証はアプリケーションサーバーやIDプロバイダーの役割で、CDNの機能ではありません。"&gt;ユーザー認証&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
 <p><a class="md-button" href="../level2/">次のレベルへ →</a></p>
 
 

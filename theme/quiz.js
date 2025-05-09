@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     list.querySelectorAll("li").forEach((li) => {
       li.addEventListener("click", (e) => {
         const li = e.currentTarget; // Use the element that was actually clicked
+        
+        // Guard: highlight li's missing dataset
+        if (!li.hasAttribute("data-correct")) {
+          console.warn("quiz-options > li missing data-correct attribute:", li);
+          return;
+        }
+        
         // Prevent multiple clicks
         if (li.classList.contains("clicked")) return;
         
