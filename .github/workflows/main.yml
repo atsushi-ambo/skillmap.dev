@@ -14,42 +14,21 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
-  security-events: write
+  contents: read
 
 jobs:
   security-scan:
     name: Security Scan
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Needed for Gitleaks to scan full history
-
-      - name: Run gitleaks
-        uses: zricethezav/gitleaks-action@v2
-        continue-on-error: true # Allow workflow to continue even if leaks are found
-        with:
-          config-path: "" # Use default config
-          report-format: sarif
-          report-path: gitleaks-report.sarif
-
-      - name: Upload Gitleaks report to GitHub
-        if: ${{ always() && hashFiles('gitleaks-report.sarif') != '' }}
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: gitleaks-report.sarif
-
-      - name: Display result message
-        run: echo "Security scan completed successfully"
+    uses: atsushi-ambo/ci-workflows/.github/workflows/security.yml@e32497f0fb113b8a5556c218b4fef1ca398283c2
+    permissions:
+      contents: read
 
   build-docs:
     name: Build & Deploy Docs
     needs: [security-scan]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
